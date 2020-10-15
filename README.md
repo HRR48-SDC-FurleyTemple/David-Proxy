@@ -10,3 +10,13 @@
     `DB_PASSWORD=<password>`
 3. To setup the database: `npm run seed`
 4. To start the server: `npm start`
+
+## API
+ - GET /api/reviews/products/:productId
+    - Returns selected product's reviews
+ - POST /api/reviews/products/:productId
+    - Creates a new object
+ - PUT /api/reviews/update/:productId/:userName
+    - Updates a target based on productId and userName
+ - DELETE
+    - Deletes a target based on the productsId and the userName
