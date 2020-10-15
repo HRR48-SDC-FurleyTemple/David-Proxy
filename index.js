@@ -26,6 +26,21 @@ app.get('/api/reviews/products/:productId',
     .then((result) => res.send(result))
     .catch((error) => res.send(error)));
 
+app.post('/api/reviews/products/:productId',
+  ( req, res ) => sequelize.query()
+  .catch( ( error ) => { console.log( 'There was an error, contact support' ) } ))
+
+app.put('/api/reviews/update/:productId/:userName', // updates by changing review to a different product based on user and product target
+  ( req, res ) => sequelize.query( `UPDATE reviews SET product_id = ${ req.param( 'productId' ) } WHERE user = '${ req.param( 'userName' ) }'`)
+  .then( res.send( 'okay' ) )
+  .catch( ( error ) => res.send( `There was an error changing ${ req.param( 'userName' ) } review to ${ req.param( 'productId' ) } product`)));
+
+app.delete('/api/reviews/delete/:productId/:userName',
+  ( req, res ) => sequelize.query( `DELETE FROM reviews WHERE product_id = '${ req.param( 'productId' ) }' AND user = '${ req.param( 'userName' ) }'`)
+  .then( res.send( 'deleted' ))
+  .catch( ( error ) => console.log( `There was an error: ${ error } deleting ${ req.param( 'userName' ) } review from ${ req.param( 'productId' ) } product` )));
+
+
 app.listen(port, () => { console.log(`listening on port ${port}`); });
 
 module.exports.server = app;
