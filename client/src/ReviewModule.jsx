@@ -24,7 +24,6 @@ const ReviewModule = (props) => {
 
     axios.get(`/api/reviews/products/${productId}`).then((response) => {
       setReviews(response.data);
-      console.log(response.data);
     }).catch((error) => {
       console.log('error getting reviews');
     });
