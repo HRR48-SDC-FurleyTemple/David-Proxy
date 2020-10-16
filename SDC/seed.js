@@ -1,12 +1,10 @@
 const faker = require( 'faker' );
-const database = require( './index.js' );
+// const database = require( './index.js' );
 const Review = require( './Review.js' );
 const fs = require( 'fs' );
 const path = require( 'path' );
 const os = require( 'os' );
 const filename = path.join( __dirname, 'seedable.csv' );
-
-const output = [];
 
 const generateScore = () => Math.ceil( Math.random() * 5 );
 
@@ -30,7 +28,7 @@ const generateReviewScores = () => {
 
 const generateSeedReviewData = () => {
   const data = [];
-  for (let i = 0; i < 10000; i += 1) {
+  for (let i = 0; i < 3; i += 1) { // ************* currently 3 will be ramped up to 10,000 3 for testing purposes
     // randomly generate between 15 and 25 reviews per product
     const numberOfReviews = Math.floor(Math.random() * 10) + 15;
 
@@ -60,16 +58,15 @@ const generateSeedReviewData = () => {
   }
   return data;
 };
-for ( let n = 0; n < 1; n++ ) {
+for ( let n = 0; n < 1; n++ ) { // will eventually run up to 10000 -- inside creates the random data and comma sepperates
   let randomDat = generateSeedReviewData()
+  const output = [];
   randomDat.forEach( ( obj , index ) => {
     let row = [];
     for ( let prop in obj ) {
       row.push( obj[ prop ] );
     }
-    if ( index === 1 ) {
-      console.log(row.join())
-    }
+    output.push(row.join())
   })
-
+  fs.writeFileSync(filename, output.join(os.EOL));
 }
