@@ -63,14 +63,13 @@ const generateSeedReviewData = () => {
 for ( let n = 0; n < 1; n++ ) {
   let randomDat = generateSeedReviewData()
   randomDat.forEach( ( obj , index ) => {
-    if ( index === 1 ) {
-      console.log( obj );
-
-      for ( let prop in obj ) {
-        console.log( obj[prop] );
-      }
+    let row = [];
+    for ( let prop in obj ) {
+      row.push( obj[ prop ] );
     }
-
+    if ( index === 1 ) {
+      console.log(row.join())
+    }
   })
 
 }
