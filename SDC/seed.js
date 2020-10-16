@@ -5,6 +5,7 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const os = require( 'os' );
 const filename = path.join( __dirname, 'seedable.csv' );
+const writer = fs.createWriteStream( filename );
 
 const generateScore = () => Math.ceil( Math.random() * 5 );
 
@@ -68,5 +69,5 @@ for ( let n = 0; n < 5; n++ ) { // will eventually run up to 10000 -- inside cre
     }
     output.push(row.join())
   })
-  fs.writeFileSync(filename, output.join(os.EOL));
+  writer.write(output.join(os.EOL));
 }
