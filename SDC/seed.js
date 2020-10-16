@@ -4,6 +4,9 @@ const Review = require( './Review.js' );
 const fs = require( 'fs' );
 const path = require( 'path' );
 const os = require( 'os' );
+const filename = path.join( __dirname, 'seedable.csv' );
+
+const output = [];
 
 const generateScore = () => Math.ceil( Math.random() * 5 );
 
@@ -57,9 +60,17 @@ const generateSeedReviewData = () => {
   }
   return data;
 };
-for ( let n = 0; n < 1000; n++ ) {
+for ( let n = 0; n < 1; n++ ) {
   let randomDat = generateSeedReviewData()
+  randomDat.forEach( ( obj , index ) => {
+    if ( index === 1 ) {
+      console.log( obj );
+
+      for ( let prop in obj ) {
+        console.log( obj[prop] );
+      }
+    }
+
+  })
 
 }
-
-console.log( generateSeedReviewData() )
