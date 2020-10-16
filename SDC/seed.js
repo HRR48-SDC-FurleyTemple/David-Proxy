@@ -6,6 +6,7 @@ const path = require( 'path' );
 const os = require( 'os' );
 const filename = path.join( __dirname, 'seedable.csv' );
 const writer = fs.createWriteStream( filename );
+writer.write('product_id,user,score,title,body,recommend,date,response_id,ease,value,quality,appearance,works');
 
 const generateScore = () => Math.ceil( Math.random() * 5 );
 
@@ -29,7 +30,7 @@ const generateReviewScores = () => {
 
 const generateSeedReviewData = () => {
   const data = [];
-  for (let i = 0; i < 3; i += 1) { // ************* currently 3 will be ramped up to 10,000 3 for testing purposes
+  for (let i = 0; i < 10000; i += 1) { // creates chunks of data to be pushed to CSV
     // randomly generate between 15 and 25 reviews per product
     const numberOfReviews = Math.floor(Math.random() * 10) + 15;
 
@@ -59,7 +60,7 @@ const generateSeedReviewData = () => {
   }
   return data;
 };
-for ( let n = 0; n < 5; n++ ) { // will eventually run up to 10000 -- inside creates the random data and comma sepperates
+for ( let n = 0; n < 5; n++ ) { // pushes chunks of data n times
   let randomDat = generateSeedReviewData()
   const output = [];
   randomDat.forEach( ( obj , index ) => {
