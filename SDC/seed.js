@@ -58,7 +58,7 @@ const generateSeedReviewData = () => {
   }
   return data;
 };
-for ( let n = 0; n < 1; n++ ) { // will eventually run up to 10000 -- inside creates the random data and comma sepperates
+for ( let n = 0; n < 5; n++ ) { // will eventually run up to 10000 -- inside creates the random data and comma sepperates
   let randomDat = generateSeedReviewData()
   const output = [];
   randomDat.forEach( ( obj , index ) => {
