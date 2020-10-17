@@ -3,7 +3,7 @@ const express = require( 'express' );
 let app = express();
 
 
-let connectionString = 'postgres://postgres:Quokka312?@localhost:5432/testdb2020';
+let connectionString = 'postgres://postgres:postgres@localhost:5432/testdb2020';
 
 const client = new Client({
   connectionString: connectionString
@@ -23,10 +23,7 @@ app.get( '/', ( req, res, next ) => {
   });
 });
 
-app.listen( 4000, ( err, result ) => {
-  if ( err ) {
-    console.log( 'There was an error' + err );
-  }
+app.listen( 4000, () => {
   console.log( 'Server is running.. on Port 4000' );
 });
 
