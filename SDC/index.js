@@ -1,7 +1,8 @@
 const { Client } = require( 'pg' );
 const express = require( 'express' );
-let app = express();
+const dotenv = require('dotenv').config({path: '../.env'});
 
+let app = express();
 
 let connectionString = 'postgres://postgres:postgres@localhost:5432/testdb2020';
 
@@ -23,8 +24,12 @@ app.get( '/', ( req, res, next ) => {
   });
 });
 
-app.listen( 4000, () => {
-  console.log( 'Server is running.. on Port 4000' );
+app.listen( 4000, ( err, success ) => {
+  if ( err ) {
+    console.log( `There was an error::: ${ err }`)
+  } else {
+    console.log( `Server is running.. on Port ${process.env.PORT}` );
+  }
 });
 
 
