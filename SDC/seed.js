@@ -28,9 +28,9 @@ const generateReviewScores = () => {
   return subsetScores;
 };
 
-const generateSeedReviewData = () => {
+const generateSeedReviewData = ( product ) => {
   const data = [];
-  for (let i = 0; i < 10000; i += 1) { // creates chunks of data to be pushed to CSV
+  for (let i = 0; i < 10000; i++ ) { // creates chunks of data to be pushed to CSV
     // randomly generate between 15 and 25 reviews per product
     const numberOfReviews = Math.floor(Math.random() * 10) + 15;
 
@@ -41,7 +41,7 @@ const generateSeedReviewData = () => {
       }
       const subsetScores = generateReviewScores();
       const params = {
-        product_id: i + 1,
+        product_id: i + 1 + product,
         user: faker.internet.userName(),
         score: generateScore(),
         title: faker.lorem.words(),
@@ -60,8 +60,8 @@ const generateSeedReviewData = () => {
   }
   return data;
 };
-for ( let n = 0; n < 5; n++ ) { // pushes chunks of data n times
-  let randomDat = generateSeedReviewData()
+for ( let n = 0; n < 1000; n++ ) { // pushes chunks of data n times
+  let randomDat = generateSeedReviewData( 10000 * n );
   const output = [];
   randomDat.forEach( ( obj , index ) => {
     let row = [];
@@ -72,3 +72,4 @@ for ( let n = 0; n < 5; n++ ) { // pushes chunks of data n times
   })
   writer.write(output.join(os.EOL));
 }
+
