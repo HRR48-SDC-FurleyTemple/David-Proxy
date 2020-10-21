@@ -2,35 +2,45 @@ const { Client } = require( 'pg' );
 const express = require( 'express' );
 const dotenv = require('dotenv').config({path: '../.env'});
 
-let app = express();
+// let app = express();
 
-let connectionString = 'postgres://postgres:postgres@localhost:5432/testdb2020';
+// let connectionString = 'postgres://SDCman:SDCpass@localhost:5432/testdb2020';
 
 const client = new Client({
-  connectionString: connectionString
+  user: 'sdcman',
+  host: 'localhost',
+  database: 'testdb2020',
+  password: 'SDCpass',
+  port: 5432,
 })
 
-client.connect();
+client.connect()
+  .then( () => {
+    console.log( 'YUUUSSSS' );
+  })
+  .catch( ( err ) => {
+    console.log( err );
+  })
 
-app.set( 'port', process.env.PORT || 4000 );
+// app.set( 'port', process.env.PORT || 4000 );
 
-app.get( '/', ( req, res, next ) => {
-  client.query('SELECT * FROM Employee WHERE id = $1', [1], ( err, result ) => {
-    if ( err ) {
-      console.log( err );
-      res.status( 400 ).send( err );
-    }
-    res.status( 200 ).send( result.rows );
-  });
-});
+// app.get( '/', ( req, res, next ) => {
+//   client.query('SELECT * FROM Employee WHERE id = $1', [1], ( err, result ) => {
+//     if ( err ) {
+//       console.log( err );
+//       res.status( 400 ).send( err );
+//     }
+//     res.status( 200 ).send( result.rows );
+//   });
+// });
 
-app.listen( 4000, ( err, success ) => {
-  if ( err ) {
-    console.log( `There was an error::: ${ err }`)
-  } else {
-    console.log( `Server is running.. on Port ${process.env.PORT}` );
-  }
-});
+// app.listen( 4000, ( err, success ) => {
+//   if ( err ) {
+//     console.log( `There was an error::: ${ err }`)
+//   } else {
+//     console.log( `Server is running.. on Port ${process.env.PORT}` );
+//   }
+// });
 
 
 // const Sequelize = require('sequelize');
