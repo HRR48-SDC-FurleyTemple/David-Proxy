@@ -6,7 +6,7 @@ const path = require( 'path' );
 const os = require( 'os' );
 const filename = path.join( __dirname, 'seedable.csv' );
 const writer = fs.createWriteStream( filename );
-writer.write('product_id,user,score,title,body,recommend,date,response_id,ease,value,quality,appearance,works,');
+// writer.write('product_id,user,score,title,body,recommend,date,response_id,ease,value,quality,appearance,works' + '\r');
 
 const generateScore = () => Math.ceil( Math.random() * 5 );
 
@@ -30,7 +30,7 @@ const generateReviewScores = () => {
 let uniq = 0;
 const generateSeedReviewData = ( product ) => {
   const data = [];
-  for (let i = 0; i < 10; i++ ) { // creates chunks of data to be pushed to CSV
+  for (let i = 0; i < 1000; i++ ) { // creates chunks of data to be pushed to CSV
     // randomly generate between 15 and 25 reviews per product
     const numberOfReviews = Math.floor(Math.random() * 10) + 15;
     for (let j = 0; j < numberOfReviews; j += 1) {
@@ -62,15 +62,15 @@ const generateSeedReviewData = ( product ) => {
   }
   return data;
 };
-for ( let n = 0; n < 10; n++ ) { // pushes chunks of data n times
-  let randomDat = generateSeedReviewData( 10 * n );
+for ( let n = 0; n < 1000; n++ ) { // pushes chunks of data n times
+  let randomDat = generateSeedReviewData( 1000 * n );
   const output = [];
   randomDat.forEach( ( obj , index ) => {
     let row = [];
     for ( let prop in obj ) {
       row.push( obj[ prop ] );
     }
-    output.push(row.join() + '\r')
+    output.push(row.join() + '\r\n')
   })
   writer.write(output.join(''));
 }
