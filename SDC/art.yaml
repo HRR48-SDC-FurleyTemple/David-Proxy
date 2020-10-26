@@ -9,10 +9,10 @@ config:
       duration: 90
       arrivalRate: 10
       name: phase 10
-    -
-      duration: 90
-      arrivalRate: 100
-      name: phase 100
+    # -
+    #   duration: 90
+    #   arrivalRate: 100
+    #   name: phase 100
     # -
     #   duration: 90
     #   arrivalRate: 1000

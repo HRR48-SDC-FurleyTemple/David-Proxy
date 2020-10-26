@@ -53,8 +53,8 @@ app.get('/api/reviews/products/:productId', ( req, res ) => {
    pool.getUsers( req, res, req.params.productId );
 })
 
-app.get('/api/reviews/products/all',
-  ( req, res ) => se)
+// app.get('/api/reviews/products/all',
+//   ( req, res ) => se)
 
 app.post('/api/reviews/products/:productId',
   ( req, res ) => {
