@@ -1,0 +1,29 @@
+config:
+  target: http://localhost:3000
+  phases:
+    -
+      duration: 90
+      arrivalRate: 1
+      name: phase 1
+    -
+      duration: 90
+      arrivalRate: 10
+      name: phase 10
+    -
+      duration: 90
+      arrivalRate: 100
+      name: phase 100
+    # -
+    #   duration: 90
+    #   arrivalRate: 1000
+    #   name: phase 1000
+  variables:
+    product_ids:
+      - [ "500", "5000", "50000", "500000", "342200", "10", "60288", "600000", "7377", "590000", "1" ]
+scenarios:
+  - name: "Find groups of reviews of a product"
+    flow:
+      - loop:
+        - get:
+            url: "/api/reviews/products/{{ $loopElement }}"
+        over: product_ids

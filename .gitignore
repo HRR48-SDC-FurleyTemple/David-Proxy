@@ -3,3 +3,4 @@ bundle.js
 review-bundle.js
 package-lock.json
 .env
+*.csv
