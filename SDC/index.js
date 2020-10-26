@@ -5,27 +5,9 @@ const path = require('path');
 const dotenv = require('dotenv');
 const Review = require('./Review.js');
 const pool = require( './pgsql.js' );
-// const { Pool } = require( 'pg' );
-// const cass = require( './cassie.js' );
-// const Sequelize = require('sequelize');
-
-/******************* */
-// const pool = new Pool({
-//   user: 'postgres',
-//   host: 'localhost',
-//   database: 'testdb2020',
-//   password: 'postgres',
-//   port: 5432,
-// })
-// console.log(pool.password)
-// pool.connect()
-// .catch( ( err ) => {
-//   console.log( err )
-// } )
-/******************** */
 
 dotenv.config();
-// const sequelize = new Sequelize('user_reviews', `${process.env.DB_USERNAME}`, `${process.env.DB_PASSWORD}`, { dialect: 'mysql', dialectOptions: { multipleStatements: true } });
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -53,8 +35,6 @@ app.get('/api/reviews/products/:productId', ( req, res ) => {
    pool.getUsers( req, res, req.params.productId );
 })
 
-app.get('/api/reviews/products/all',
-  ( req, res ) => se)
 
 app.post('/api/reviews/products/:productId',
   ( req, res ) => {
