@@ -10,6 +10,8 @@ const writer = fs.createWriteStream( filename );
 
 const generateScore = () => Math.ceil( Math.random() * 5 );
 
+
+
 const generateReviewScores = () => {
   const subset = [ 'ease', 'value', 'quality', 'appearance', 'works' ];
   const subsetScores = {
@@ -30,7 +32,7 @@ const generateReviewScores = () => {
 let uniq = 0;
 const generateSeedReviewData = ( product ) => {
   const data = [];
-  for (let i = 0; i < 1000; i++ ) { // creates chunks of data to be pushed to CSV
+  for (let i = 0; i < 100; i++ ) { // creates chunks of data to be pushed to CSV
     // randomly generate between 15 and 25 reviews per product
     const numberOfReviews = Math.floor(Math.random() * 10) + 15;
     for (let j = 0; j < numberOfReviews; j += 1) {
@@ -62,8 +64,8 @@ const generateSeedReviewData = ( product ) => {
   }
   return data;
 };
-for ( let n = 0; n < 1000; n++ ) { // pushes chunks of data n times
-  let randomDat = generateSeedReviewData( 1000 * n );
+for ( let n = 0; n < 10000; n++ ) { // pushes chunks of data n times
+  let randomDat = generateSeedReviewData( 100 * n );
   const output = [];
   randomDat.forEach( ( obj , index ) => {
     let row = [];
