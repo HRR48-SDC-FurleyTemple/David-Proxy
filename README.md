@@ -4,11 +4,30 @@
 
 1. To install dependencies: `npm install`
 2. Create a .env file in your root directory and add these configs:
-    `NODE_ENV=development`
-    `PORT=3000`
-    `DB_USERNAME=<username>`
-    `DB_PASSWORD=<password>`
-3. To setup the database: `npm run seed`
+    - `NODE_ENV=development`
+    - `PORT=3000`
+    - `DB_USERNAME=<username>`
+    - `DB_PASSWORD=<password>`
+3. To seed the database:
+   - log into postgres with postgress
+   - create database 'testdb2020' WITH USER poastgres
+   - coppy paste the following into your postgres CLI
+      CREATE TABLE fake_reviews (
+      id SERIAL PRIMARY KEY,
+      product_id INTEGER NOT NULL,
+      username VARCHAR(100),
+      score INTEGER NOT NULL,
+      title VARCHAR(100) NOT NULL,
+      body VARCHAR (100) NOT NULL,
+      recommend BOOLEAN NOT NULL,
+      date VARCHAR (100) NOT NULL,
+      response_id INTEGER,
+      ease INTEGER,
+      value INTEGER,
+      quality INTEGER,
+      appearance INTEGER,
+      works INTEGER);
+
 4. To start the server: `npm start`
 
 ## API
