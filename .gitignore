@@ -6,3 +6,4 @@ package-lock.json
 *.csv
 loaderio-e*
 *.log
+newrelic*
