@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 const sequelize = new Sequelize('user_reviews', `${process.env.DB_USERNAME}`, `${process.env.DB_PASSWORD}`, { dialect: 'mysql', dialectOptions: { multipleStatements: true } });
-
+// I might have to change the initiation, however this is how the data should be shaped 
 const Review = sequelize.define('review', {
   id: {
     type: Sequelize.INTEGER,
