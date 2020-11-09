@@ -1,4 +1,5 @@
 # review
+A backend postgres derived system designed to supply a point of sale ecommerce site with a steady connection for large volumes of requests.
 
 ## setup
 
